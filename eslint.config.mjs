@@ -1,26 +1,17 @@
-// @ts-check
-import eslint from '@eslint/js';
-import tseslint from 'typescript-eslint';
-import globals from 'globals';
-
-export default tseslint.config(
+import js from '@eslint/js'
+import globals from 'globals'
+import tseslint from 'typescript-eslint'
+import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
+import { defineConfig } from 'eslint/config'
+export default defineConfig([
   {
-    ignores: ['eslint.config.mjs', 'dist'],
+    ignores: ['data', 'dist', 'node_modules', 'src/generated'],
+    files: ['**/*.{js,mjs,cjs,ts,mts,cts}'],
+    plugins: { js },
+    extends: ['js/recommended'],
+    languageOptions: { globals: globals.node },
   },
-  eslint.configs.recommended,
-  ...tseslint.configs.recommended,
-  {
-    languageOptions: {
-      globals: {
-        ...globals.node,
-        ...globals.jest,
-      },
-      sourceType: 'commonjs',
-    },
-  },
-  {
-    rules: {
-      semi: ['error', 'never'],
-    },
-  },
-);
+  tseslint.configs.recommended,
+  eslintPluginPrettierRecommended,
+])
+//# sourceMappingURL=eslint.config.mjs.map
