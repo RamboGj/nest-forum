@@ -1,0 +1,15 @@
+version: "5.2.0"
+
+services:
+  postgres:
+    container_name: nest-clean-pg
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123456789
+      - POSTGRES_DB=nest-clean
+      - PG_DATA=/data/postgres
+    volumes:
+      - ./data/pg:/data/postgres
