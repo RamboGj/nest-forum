@@ -4,6 +4,9 @@
 /build
 /data
 
+# Prisma generated client (regenerated via `prisma generate`)
+/src/generated
+
 # Logs
 logs
 *.log
